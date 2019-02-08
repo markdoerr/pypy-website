@@ -1,0 +1,51 @@
+// Navbar
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+// .navbar-open must be toggled to show the menu once it has collapsed due to media query
+
+$navbar-collapse-width: 60rem
+$navbar-item-icon-color: #fff
+
+.navbar
+    z-index: 100
+    overflow: hidden
+    ul
+        list-style: none
+
+.navbar-item
+    float: left
+    display: block
+    text-align: center
+    padding: 0.5rem 0.66rem
+    margin: 0 0.2rem
+
+.navbar-item-icon
+        display: none
+        float: right
+        background-color: $navbar-item-icon-color
+        border-radius: 50%
+
+@media screen and (max-width: $navbar-collapse-width)
+    // hide items
+    .navbar-item
+        display: none
+        float: none
+        text-align: left
+    // show icon and lock position
+    .navbar-item-icon
+        display: block
+        position: fixed
+        right: 0
+        top: 0
+        margin-top: 2rem
+        margin-right: 2rem
+
+@media screen and (max-width: $navbar-collapse-width)
+    // This has to be toggled by JS, default is off
+    .navbar-open
+        position: relative
+
+        .navbar-item
+            display: block
+            float: none
+            text-align: left
+           

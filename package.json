@@ -1,0 +1,23 @@
+{
+  "name": "pypy-website",
+  "version": "0.1.0",
+  "description": "Official website for PyPy, the fast and compliant alternative implementation of the Python programming language",
+  "homepage": "https://pypy.org/",
+  "keywords": [],
+  "author": "frsdun@gmail.com",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-sass": "node ./node_modules/node-sass/bin/node-sass --include-path sass src/sass/styles.sass web/css/styles.css",
+    "minify-css": "cleancss -o web/css/styles.min.css web/css/styles.css",
+    "watch-sass": "nodemon -e scss,sass -x \"npm run build-sass && npm run minify-css\"",
+    "serve": "node ./node_modules/http-server/bin/http-server ./web"
+  },
+  "devDependencies": {
+    "http-server": "^0.11.1",
+    "node-sass": "^4.11.0",
+    "clean-css-cli": "^4.2.1",
+    "nodemon": "^1.18.9"
+  }
+}

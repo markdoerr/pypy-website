@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>PyPy - Welcome to PyPy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="PyPy, a fast and compliant alternate implementation of the Python language" />
+    <meta name="keywords" content="PyPy, Python, CPython, RPython, JIT, fast, alternate implementation, Open Source">
+    <meta name="author" content="The PyPy Team" />
+    <meta name="copyright" content="MIT" />
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
+</head>
+
+<body>
+    <header>
+        <nav class="container">
+            <ul class="navbar js-navbar">
+                <!-- <li><a class="navbar-item" href="index.html">Home</a></li> -->
+                <li><a class="navbar-item" href="features.html">What is PyPy?</a></li>
+                <li><a class="navbar-item" href="downloads.html">Download</a></li>
+                <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li>
+                <li><a class="navbar-item" href="performance.html">Performance</a></li>
+                <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
+                <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
+                <!-- <li><a class="navbar-item" href="people.html">People</a></li> -->
+                <li><a class="navbar-item" href="contact.html">Contact us</a></li>
+                <li><a class="navbar-item navbar-item-icon shadow-primary" href="#"><i class="icon-menu"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+    <main class="container">
+        <section class="pt-2">
+            <div class="row">
+
+                <div class="column pb-4">
+                    <img class="mb-3" src="img/logo-with-text-blue-600x278.png" alt="PyPy logo" width="300px">
+                    <p>
+                        A <a href="http://speed.pypy.org/">fast</a> and <a href="compatibility.html">compliant</a> alternative implementation of <a href="https://www.python.org/">Python</a> <sup>
+                            <!-- (2.7.13 and 3.5.3) -->
+                    </p>
+                    <a class="button button-outline" href="features.html">What is PyPy?</a>
+                    <a class="button" href="downloads.html">Get started</a>
+                    <a class="button button-outline" href="http://doc.pypy.org">Documentation</a>
+                </div>
+
+                <div class="column pb-4">
+                    <figure class="m-0">
+                        <p>
+                            <span>On average PyPy is <strong>7.6 times faster</strong> than standard Python</span><br>
+                        </p>
+                        <a href="http://speed.pypy.org/" target="_blank"><img src="img/pypy-speed-comparison-graph.png" alt="PyPy vs Python speed comparison graph"></a>
+                        <figcaption>
+                            <small class="muted">
+                                PyPy trunk (with JIT) benchmark times normalized to CPython. Smaller is better<br>
+                                Based on he geometric average of all benchmarks
+                            </small>
+                        </figcaption>
+                    </figure>
+                </div>
+
+            </div>
+            <blockquote class="my-3">
+                <em class="text-lg">&quot;If you want your code to run faster, you should probably just use PyPy.&quot;</em><small class="pl-2">Guido van Rossum (creator of Python)</small>
+            </blockquote>
+        </section>
+        <section>
+            <hr>
+            <h2>Advantages and distinct features</h2>
+            <ul>
+                <li><strong>Speed:</strong>
+                    thanks to its Just-in-Time compiler, Python programs often run <a href="http://speed.pypy.org/">faster</a> on PyPy. <a href="https://en.wikipedia.org/wiki/Just-in-time_compilation">(What is a JIT compiler?)</a></li>
+                <li><strong>Memory usage:</strong>
+                    memory-hungry Python programs (several hundreds of MBs or more) might end up taking <a href="https://morepypy.blogspot.com/2009/10/gc-improvements.html">less space</a> than they do in CPython.</li>
+                <li><strong>Compatibility:</strong>
+                    PyPy is <a href="compatibility.html">highly compatible</a> with existing python code. It supports <a href="https://cffi.readthedocs.org">cffi</a> and can run popular python libraries like <a href="https://twistedmatrix.com/">twisted</a> and <a href="https://www.djangoproject.com/">django</a>.</li>
+                <li><strong>Stackless: </strong> PyPy comes by default with support for stackless mode, providing micro-threads for massive concurrency.</li>
+                <li>As well as other <a href="features.html">features.</a></li>
+
+            </ul>
+            <hr>
+        </section>
+    </main>
+    <footer>
+        <a class="display-block text-center mb-3" href="https://pypy.org/"><img src="img/logo-with-text-grey-small.png" alt="PyPy logo" width="60px"></a>
+    </footer>
+    <script type="text/javascript" src="js/styles.js"></script>
+</body>
+
+</html>
