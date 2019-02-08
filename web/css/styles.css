@@ -1274,3 +1274,22 @@ img {
 @media screen and (max-width: 40rem) {
   .row .column {
     text-align: center; } }
+
+.person {
+  min-height: 190px;
+  margin-bottom: 8rem; }
+  .person h3 {
+    margin-bottom: 1rem; }
+  .person img {
+    float: left;
+    max-width: 150px;
+    margin-right: 2rem;
+    margin-bottom: 1rem; }
+  .person p {
+    margin-left: 150px; }
+
+@media screen and (max-width: 40rem) {
+  .person img {
+    float: none; }
+  .person p {
+    margin-left: 0; } }
