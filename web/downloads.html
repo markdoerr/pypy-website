@@ -1,5 +1,556 @@
-downloads
+<!DOCTYPE html>
+<html lang="en">
 
-download.html#with-a-jit-compiler
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-download.html#building-from-source
+    <title>PyPy - Download</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Download PyPy" />
+    <meta name="keywords" content="PyPy, Python, CPython, RPython, JIT, fast, alternate implementation, Open Source, download, build from source, build, instructions, tutorial">
+    <meta name="author" content="The PyPy team" />
+    <meta name="copyright" content="MIT" />
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
+</head>
+
+<body id="top">
+    <header>
+        <nav class="container">
+            <ul class="navbar js-navbar">
+                <li><a class="navbar-item" href="index.html"><img src="img/pypy-logo-nav.png" alt="PyPy home"></a></li>
+                <li><a class="navbar-item" href="features.html">What is PyPy?</a></li>
+                <!-- <li><a class="navbar-item" href="downloads.html">Download</a></li> -->
+                <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li>
+                <li><a class="navbar-item" href="performance.html">Performance</a></li>
+                <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
+                <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
+                <li><a class="navbar-item" href="contact.html">Contact us</a></li>
+                <li><a class="navbar-item navbar-item-icon js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="quick-start">
+            <h2>Quick-start</h2>
+            <ul class="ml-3">
+                <li>
+                    <a href="#download">Download</a>
+                    <ul class="ml-3">
+                        <li><a href="#default-with-a-jit-compiler">Default (with a JIT Compiler)</a></li>
+                        <li><a href="#other-versions">Other versions</a></li>
+                    </ul>
+                </li>
+                <li><a href="#installing">Installing</a> (optional)</li>
+                <li><a href="#installing-modules">Installing more modules</a></li>
+                <ul>
+                    <li><a href="#installing-numpy">Installing NumPy</a> (optional)</li>
+                </ul>
+                <li><a href="#building-from-source">Building from source</a></li>
+                <li><a href="#packaging">Packaging</a></li>
+                <li><a href="#checksums">Checksums</a></li>
+            </ul>
+            <hr>
+        </section>
+
+
+        <section id="download">
+            <h2>Download and install</h2>
+
+            <p>
+                There are <a href="http://buildbot.pypy.org/nightly/trunk/">nightly binary builds</a> available. Those builds are not always
+                as stable as the release, but they contain numerous bugfixes and
+                performance improvements.
+            </p>
+            <p>
+                We provide binaries for x86, ARM, PPC and s390x running on different operating systems such as
+                Linux, Mac OS X and Windows:
+            </p>
+            <ul class="ml-3">
+                <li>the Python2.7 compatible release — <strong>PyPy2.7 v6.0</strong> — (<a href="http://doc.pypy.org/en/latest/release-v6.0.0.html">what's new in PyPy2.7?</a>)</li>
+                <li>the Python3.5 compatible release — <strong>PyPy3.5 v6.0</strong> — (<a href="http://doc.pypy.org/en/latest/release-v6.0.0.html">what's new in PyPy3.5?</a>).</li>
+                <li>the Python2.7 Software Transactional Memory special release — <strong>PyPy-STM 2.5.1</strong> (Linux x86-64 only)</li>
+            </ul>
+
+            <div id="jit-compiler-version">
+                <span id="default-with-a-jit-compiler"></span>
+                <h3>&ldquo;JIT Compiler&rdquo; version</h3>
+                <p>
+                    These binaries include a Just-in-Time compiler. They only work on
+                    x86 CPUs that have the <a href="http://en.wikipedia.org/wiki/SSE2">SSE2</a> instruction set (most of
+                    them do, nowadays), or on x86-64 CPUs. They also contain <a href="http://www.stackless.com/">stackless</a>
+                    extensions, like <a href="http://pypy.readthedocs.org/en/latest/stackless.html#greenlets">greenlets</a>.
+                </p>
+            </div>
+
+            <div id="linux-binaries-and-common-distributions">
+                <h3>Linux binaries and common distributions</h3>
+                <p>
+                    Linux binaries are dynamically linked, as is usual, and thus might
+                    not be usable due to the sad story of linux binary compatibility. This means
+                    that <strong>Linux binaries are only usable on the distributions written next to
+                        them</strong> unless you're ready to hack your system by adding symlinks to the
+                    libraries it tries to open. There are better solutions:
+                </p>
+                <ul class="ml-3">
+                    <li>use Squeaky's <a href="https://github.com/squeaky-pl/portable-pypy#portable-pypy-distribution-for-linux">portable Linux binaries</a>.</li>
+                    <li>or download PyPy from your release vendor (usually an outdated
+                        version): <a href="http://packages.ubuntu.com/search?keywords=pypy&amp;searchon=names">Ubuntu</a> (<a href="https://launchpad.net/~pypy/+archive/ppa">PPA</a>), <a href="http://packages.debian.org/sid/pypy">Debian</a>,
+                        <a href="https://github.com/Homebrew/homebrew-core/blob/master/Formula/pypy.rb">Homebrew</a>, MacPorts,
+                        <a href="http://fedoraproject.org/wiki/Features/PyPyStack">Fedora</a>, <a href="http://packages.gentoo.org/package/dev-python/pypy">Gentoo</a> and <a href="https://wiki.archlinux.org/index.php/PyPy">Arch</a>
+                        are known to package PyPy, with various
+                        degrees of being up-to-date.</li>
+                    <li>or <a href="#building-from-source">translate</a> your own PyPy.</li>
+                </ul>
+            </div>
+
+            <div id="python2-7-compatible-pypy-6-0-0">
+                <span id="release"></span>
+                <h3>Python2.7 compatible PyPy 6.0.0</h3>
+                <ul class="ml-3">
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-linux32.tar.bz2">Linux x86 binary (32bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-linux64.tar.bz2">Linux x86-64 binary (64bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-linux-armhf-raspbian.tar.bz2">ARM Hardfloat Linux binary (ARMHF/gnueabihf, Raspbian)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-linux-armel.tar.bz2">ARM Hardfloat Linux binary (ARMHF/gnueabihf, Ubuntu Raring)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-osx64.tar.bz2">Mac OS X binary (64bit)</a></li>
+                    <li>FreeBSD x86 and x86_64: see <a href="http://www.freshports.org/lang/pypy">FreshPorts</a></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-win32.zip">Windows binary (32bit)</a> (you might need the VS 2008 runtime library
+                        installer <a href="http://www.microsoft.com/en-us/download/details.aspx?id=5582">vcredist_x86.exe</a>.)</li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v5.10.0-ppc64.tar.bz2">PowerPC PPC64 Linux binary (64bit big-endian, Fedora 20)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v5.10.0-ppc64le.tar.bz2">PowerPC PPC64le Linux binary (64bit little-endian, Fedora 21)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-s390x.tar.bz2">s390x Linux binary (built on Redhat Linux 7.2)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-src.tar.bz2">Source (tar.bz2)</a>; <a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-src.zip">Source (zip)</a>. See below for
+                        more about the sources.</li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads">All our downloads,</a> including previous versions. We also have a
+                        <a href="http://buildbot.pypy.org/mirror/">mirror</a>, but please use only if you have troubles accessing the links above</li>
+                </ul>
+            </div>
+
+
+            <div id="python-3-5-3-compatible-pypy3-5-v6-0-0">
+                <h3>Python 3.5.3 compatible PyPy3.5 v6.0.0</h3>
+                <ul class="ml-3">
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-linux32.tar.bz2">Linux x86 binary (32bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-linux64.tar.bz2">Linux x86-64 binary (64bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-linux-armhf-raspbian.tar.bz2">ARM Hardfloat Linux binary (ARMHF/gnueabihf, Raspbian)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-linux-armel.tar.bz2">ARM Softfloat Linux binary (ARMEL/gnueabi, Ubuntu Raring)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-osx64.tar.bz2">Mac OS X binary (64bit)</a> (High Sierra &gt;= 10.13, not for Sierra and below)</li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-win32.zip">Windows binary (32bit)</a> <strong>BETA</strong></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-s390x.tar.bz2">s390x Linux binary (built on Redhat Linux 7.2)</a> <sup>(see * below)</sup></li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-src.tar.bz2">Source (tar.bz2)</a>; <a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-src.zip">Source (zip)</a>. See below for
+                        more about the sources.</li>
+                    <li><a href="https://bitbucket.org/pypy/pypy/downloads">All our downloads,</a> including previous versions. We also have a
+                        <a href="http://buildbot.pypy.org/mirror/">mirror</a>, but please use only if you have troubles accessing the links above</li>
+                </ul>
+                <p>
+                    If your CPU is really, really old, it may be a x86-32 without SSE2.
+                    There is untested support for manually translating PyPy's JIT without
+                    SSE2 (<code>--jit-backend=x86-without-sse2</code>) but note that your machine
+                    is probably low-spec enough that running CPython on it is a better
+                    idea in the first place.
+                </p>
+                <p>
+                    <strong class="test-lg">*</strong> Stating it again: the Linux binaries are provided for the
+                    distributions listed here. <strong>If your distribution is not exactly this
+                        one, it won't work,</strong> you will probably see: <code>pypy: error while loading shared
+                            libraries: &#8230;</code>. Unless you want to hack a lot, try out the
+                    <a href="https://github.com/squeaky-pl/portable-pypy#portable-pypy-distribution-for-linux">portable Linux binaries</a>.
+                </p>
+            </div>
+            <hr>
+        </section>
+
+
+        <section id="other-versions">
+            <span id="other-versions-without-a-jit"></span>
+            <h2>Other versions</h2>
+            <p>The other versions of PyPy are:</p>
+            <ul class="ml-3">
+                <li>
+                    <strong>PyPy-STM 2.5.1</strong> This is a special version of PyPy! See the <a href="http://doc.pypy.org/en/latest/stm.html">Software Transactional
+                        Memory</a> (STM) documentation. <br>
+                    <a href="https://bitbucket.org/pypy/pypy/downloads/pypy-stm-2.5.1-linux64.tar.bz2">PyPy-STM Linux x86-64 binary (64bit, tar.bz2 built on Ubuntu 12.04 - 16.04)</a>
+                </li>
+                <li>
+                    The most up-to-date <a href="http://buildbot.pypy.org/nightly/trunk/">nightly binary builds</a> with a JIT, if the official
+                    release is too old for what you want to do. There are versions for
+                    different libc on this site too.
+                </li>
+                <li>
+                    Reverse debugger: This version enables debugging your Python
+                    programs by going forward and backward in time. See the <a href="https://bitbucket.org/pypy/revdb/">RevDB
+                        documentation</a>.
+                </li>
+                <li>
+                    Sandboxing: A special safe version. Read the docs about <a href="features.html#sandboxing">sandboxing</a>.
+                    This version is <strong>not supported</strong> and not actively maintained. You
+                    will likely have to fix some issues yourself, or checkout an old
+                    version, or otherwise play around on your own. We provide this
+                    documentation only for historical reasons. Please do not use in
+                    production. For reference, there are some very old, unmaintained
+                    binaries for Linux (<a href="https://bitbucket.org/pypy/pypy/downloads/pypy-1.8-sandbox-linux64.tar.bz2">32bit</a>,
+                    <a href="https://bitbucket.org/pypy/pypy/downloads/pypy-1.8-sandbox-linux.tar.bz2">64bit</a>).
+                </li>
+            </ul>
+            <hr>
+        </section>
+
+
+        <section id="installing">
+            <h2>Installing</h2>
+            <p>
+                All binary versions are packaged in a <code>tar.bz2</code> or <code>zip</code> file. When
+                uncompressed, they run in-place. For now you can uncompress them
+                either somewhere in your home directory or, say, in <code>/opt</code>, and
+                if you want, put a symlink from somewhere like
+                <code>/usr/local/bin/pypy</code> to <code>/path/to/pypy_expanded/bin/pypy</code>. Do
+                not move or copy the executable <code>pypy</code> outside the tree &ndash; put
+                a symlink to it, otherwise it will not find its libraries.
+            </p>
+            <hr>
+        </section>
+
+        <section id="installing-modules">
+            <h2>Installing modules</h2>
+            <p>
+                There are as yet few distribution-ready packages.
+                We recommend installing <code>pip</code>, which is the standard package
+                manager of Python. It works like it does on CPython as explained in the
+                <a href="http://doc.pypy.org/en/latest/install.html">installation documentation</a>.
+            </p>
+            <p>
+                If you use your distribution's PyPy package we recommend you install packages
+                into a virtualenv. If you try to build a module and the build process complains
+                about &ldquo;missing Python.h&rdquo;, you may need to install the pypy-dev package.
+            </p>
+            <hr>
+        </section>
+
+
+        <section id="installing-numpy">
+            <h2>Installing NumPy</h2>
+            <p>
+                <strong>There are two different versions of NumPy for PyPy.</strong> For details see this
+                <a href="http://doc.pypy.org/en/latest/faq.html#should-i-install-numpy-or-numpypy">FAQ question</a>.
+            </p>
+            <div id="standard-numpy">
+                <h3>1. Standard NumPy</h3>
+                <p>
+                    Installation works on any recent PyPy (the <a href="#release">release</a> above is fine).
+                    The currently released numpy 1.13 works except for <code>nditers</code> with the
+                    <code>updateifcopy</code> flag.
+                    For example, without using a virtualenv:
+                </p>
+                <pre><code>$ ./pypy-xxx/bin/pypy -m ensurepip
+$ ./pypy-xxx/bin/pip install cython numpy
+</code></pre>
+                <p>(See the general <a href="http://doc.pypy.org/en/latest/install.html">installation documentation</a> for more.)</p>
+            </div>
+
+            <div id="numpypy">
+                <h3>2. NumPyPy</h3>
+                <p>
+                    The &ldquo;numpy&rdquo; module can also be installed from <a href="https://bitbucket.org/pypy/numpy">our own repository</a> rather
+                    than from the official source. This version uses our
+                    built-in <code>_numpypy</code> multiarray replacement module, written in RPython.
+                    This module is not complete, but if it works it should give correct answers.
+                    Its performance is hard to predict exactly. For regular NumPy
+                    source code that handles large arrays, it is likely to be slower than
+                    the standard NumPy. It is faster on pure python code that loop over ndarrays
+                    doing things on an element-by-element basis.
+                </p>
+                <p>Installation (see the <a href="http://doc.pypy.org/en/latest/install.html">installation documentation</a> for installing <code>pip</code>):</p>
+                <pre><code>pypy -m pip install git+https://bitbucket.org/pypy/numpy.git</code></pre>
+                <p>Alternatively, the direct way:</p>
+                <pre><code>git clone https://bitbucket.org/pypy/numpy.git
+cd numpy
+pypy setup.py install
+</code></pre>
+                <p>If you installed to a system directory, you need to also run this once:</p>
+                <pre><code>sudo pypy -c 'import numpy'
+</code></pre>
+                <p>
+                    Note again that this version is incomplete: many things do
+                    not work and those that do may not be any faster than NumPy on CPython.
+                    For further instructions see <a href="https://bitbucket.org/pypy/numpy">the pypy/numpy repository</a> and the
+                    <a href="http://doc.pypy.org/en/latest/faq.html#should-i-install-numpy-or-numpypy">FAQ question</a> about the difference between the two.
+                </p>
+            </div>
+            <hr>
+        </section>
+
+
+        <section id="building-from-source">
+            <h2>Build from source</h2>
+
+            <p>(see more build <a href="http://pypy.readthedocs.org/en/latest/build.html">instructions</a>)</p>
+            <ol>
+                <li>
+                    <p>
+                        Get the source code. The preferred way is to checkout the current
+                        trunk using <a href="https://www.mercurial-scm.org/">Mercurial</a>. The trunk usually works and is of course
+                        more up-to-date. The following command should run in about 7 minutes
+                        nowadays if you have hg &gt;= 3.7 (it is much slower with older versions):
+                    </p>
+                    <pre><code>hg clone https://bitbucket.org/pypy/pypy</code></pre>
+                    <p>
+                        The trunk contains PyPy 2. For PyPy 3, switch to the correct branch:
+                    </p>
+                    <pre><code># for PyPy 3: switch to the branch of PyPy that implements Python 3.5
+hg update py3.5
+</code></pre>
+                    <p>
+                        Alternatively, get one of the following smaller packages for the source at
+                        the same revision as the above binaries:
+                    </p>
+                    <ul>
+                        <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-src.tar.bz2">pypy2-v6.0.0-src.tar.bz2</a> (sources, PyPy 2 only)</li>
+                        <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-src.tar.bz2">pypy3-v6.0.0-src.tar.bz2</a> (sources, PyPy 3 only)</li>
+                    </ul>
+                </li>
+                <li>
+                    <p>Make sure you <strong>installed the dependencies.</strong> See the list <a href="http://pypy.readthedocs.org/en/latest/build.html#install-build-time-dependencies">here</a>.</p>
+                </li>
+                <li>
+                    <p>Enter the <code>goal</code> directory:</p>
+                    <pre><code>cd pypy/pypy/goal</code></pre>
+                </li>
+                <li>
+                    <p>
+                        Run the <code>rpython</code> script. Here are the common combinations
+                        of options (works also with <code>python</code> instead of <code>pypy</code>;
+                        requires CPython 2.7 or PyPy 2, even to build PyPy 3):
+                    </p>
+                    <pre><code>
+pypy ../../rpython/bin/rpython -Ojit targetpypystandalone           # get the JIT version
+pypy ../../rpython/bin/rpython -O2 targetpypystandalone             # get the no-jit version
+pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone   # get the sandbox version
+
+</code></pre>
+                </li>
+                <li>
+                    <p>
+                        Enjoy Mandelbrot <span>:-)</span> It takes on the order of half an hour to
+                        finish the translation, and about 3GB of RAM on a 32-bit system
+                        and about 5GB on 64-bit systems. (Do not start a translation on a
+                        machine with insufficient RAM! It will just swap forever. See
+                        notes below in that case.)
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        If you want to install this PyPy as root, please read the next section,
+                        <a href="#packaging">Packaging</a>.
+                    </p>
+                </li>
+            </ol>
+            <h4>Notes:</h4>
+            <ul class="ml-3">
+                <li>
+                    <p>
+                        It is recommended to use PyPy to do translations, instead of using CPython,
+                        because it is twice as fast. You should just start by downloading an
+                        official release of PyPy (with the JIT). If you really have to use CPython
+                        then note that we are talking about CPython 2.7 here, not CPython 3.x.
+                        (Older versions like 2.6 are out.)
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        On some 32-bit systems, the address space limit of 2 or 3 GB of RAM
+                        can be an issue. More generally you may be just a little bit low of
+                        RAM. First note that 2 GB is really not enough nowadays; on Windows
+                        you first need to refer to the <a href="http://doc.pypy.org/en/latest/windows.html#preparing-windows-for-the-large-build">Windows build instructions</a>. More
+                        precisely, translation on 32-bit takes at this point 2.7 GB if PyPy is
+                        used and 2.9 GB if CPython is used. There are two workarounds:
+                    </p>
+                    <ol>
+                        <li>
+                            Use PyPy, not CPython. If you don't have any PyPy so far, not even
+                            an older version, then you need to build one first, with some parts
+                            removed. So, first translate with
+                            <code>...rpython -Ojit targetpypystandalone --withoutmod-micronumpy --withoutmod-cpyext</code>
+                            , then copy <code>pypy-c</code> and <code>libpypy_c.so</code>
+                            somewhere else, and finally call it with
+                            <code>...pypy-c ../../rpython/bin/rpython -Ojit</code>
+                        </li>
+                        <li>
+                            If even using PyPy instead of CPython is not enough, try to tweak
+                            some internal parameters. Example (slower but saves around 400MB):
+                        </li>
+                    </ol>
+                    <pre><code>
+PYPY_DONT_RUN_SUBPROCESS=1 PYPY_GC_MAX_DELTA=200MB pypy --jit loop_longevity=300 ../../rpython/bin/rpython -Ojit --source
+# then read the next point about --source
+
+</code></pre>
+                </li>
+                <li>
+                    <p>
+                        You can run translations with <code>--source</code>, which only builds the C
+                        source files (and prints at the end where). Then you can <code>cd</code> there
+                        and execute <code>make</code>. This is another way to reduce memory usage.
+                        Note that afterwards, you have to run manually
+                        <code>>pypy-c .../pypy/tool/build_cffi_imports.py</code> if you want to be able to import
+                        the cffi-based modules.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        On Linux, translating with <code>asmgcroot</code>, is delicate.
+                        It requires using gcc with no particularly
+                        fancy options. It does not work e.g. with clang, or if you pass uncommon
+                        options with the <code>CFLAGS</code> environment variable. If you insist on
+                        passing these options or using clang, then you can compile PyPy with
+                        the default <a href="http://pypy.readthedocs.org/en/latest/config/translation.gcrootfinder.html">shadow stack</a>
+                        option instead (for a small performance price in non-JITted code).
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Like other JITs, PyPy doesn't work out of the box on some Linux
+                        distributions that trade full POSIX compliance for extra security
+                        features. E.g. with PAX, you have to run PyPy with <code>paxctl -cm</code>.
+                        This also applies to translation (unless you use CPython to run the
+                        translation and you specify <code>--source</code>).
+                    </p>
+                </li>
+            </ul>
+
+            <hr>
+        </section>
+
+
+        <section id="packaging">
+            <h2>Packaging</h2>
+
+            <p>
+                Once PyPy is translated from source the binary package similar to those
+                provided in the section <a href="#default-with-a-jit-compiler">Default (with a JIT Compiler)</a> above could be
+                easily created with <code>package.py</code> script as following:
+            </p>
+            <pre><code>
+cd ./pypy/pypy/tool/release/
+python package.py --help #for information
+python package.py --archive-name pypy-my-own-package-name
+
+</code></pre>
+            <p>
+                It is recommended to use package.py because custom scripts will
+                invariably become out-of-date. If you want to write custom scripts
+                anyway, note an easy-to-miss point: some modules are written with CFFI,
+                and require some compilation. If you install PyPy as root without
+                pre-compiling them, normal users will get errors:
+            </p>
+            <ul class="ml-3">
+                <li>
+                    <strong>PyPy 2.5.1 or earlier:</strong> normal users would see permission errors.
+                    Installers need to run <code>pypy -c &ldquo;import gdbm&rdquo;</code> and other similar
+                    commands at install time; the exact list is in <a href="https://bitbucket.org/pypy/pypy/src/default/pypy/tool/release/package.py">package.py</a>. <br>
+                    Users seeing a broken installation of PyPy can fix it after-the-fact if they
+                    have sudo rights, by running once e.g. <code>sudo pypy -c &quot;import gdbm&quot;</code>.
+                </li>
+                <li>
+                    <strong>PyPy 2.6 and later:</strong> anyone would get <code>ImportError: no module named
+                            _gdbm_cffi</code>. Installers need to run <code>pypy _gdbm_build.py</code> in the
+                    <code>lib_pypy</code> directory during the installation process (plus others;
+                    see the exact list in <a href="https://bitbucket.org/pypy/pypy/src/default/pypy/tool/release/package.py">package.py</a>). <br>
+                    Users seeing a broken installation of PyPy can fix it after-the-fact, by running
+                    <code>pypy /path/to/lib_pypy/_gdbm_build.py</code>. This command produces a file
+                    called <code>_gdbm_cffi.pypy-41.so</code> locally, which is a C extension
+                    module for PyPy. You can move it at any place where modules are
+                    normally found: e.g. in your project's main directory, or in a
+                    directory that you add to the env var <code>PYTHONPATH</code>.
+                </li>
+            </ul>
+            </div>
+
+            <hr>
+        </section>
+
+
+        <section id="checksums">
+            <h2>Checksums</h2>
+            <p>Here are the checksums for each of the downloads</p>
+
+            <h4>pypy2.7-5.10.0 sha256:</h4>
+            <pre><code>
+ee1980467ac8cc9fa9d609f7da93c5282503e59a548781248fe1914a7199d540  pypy2-v5.10.0-linux32.tar.bz2
+da85af9240220179493ad66c857934dc7ea91aef8f168cd293a2d99af8346ee2  pypy2-v5.10.0-linux64.tar.bz2
+6fdd55dd8f674efd06f76edb60a09a03b9b04a5fbc56741f416a94a0b9d2ff91  pypy2-v5.10.0-linux-armel.tar.bz2
+5ec3617bb9a07a0a0b2f3c8fbe69912345da4696cdb0a2aca7889b6f1e74435c  pypy2-v5.10.0-linux-armhf-raspbian.tar.bz2
+7e4120f0a83529a6851cbae0ec107dc7085ba8a4aeff4e7bd9da9aadb1ef37a4  pypy2-v5.10.0-osx64.tar.bz2
+dab4dccfa71820c4f803f5a82e13f76517bfde5fafe1e5fba6ff58ef2ba318ab  pypy2-v5.10.0-s390x.tar.bz2
+1209f2db718e6afda17528baa5138177a14a0938588a7d3e1b7c722c483079a8  pypy2-v5.10.0-src.tar.bz2
+89304eb886f84b5c65f3f4079445ef018cdb9a6e59ef4ed2095d37248a3fefcc  pypy2-v5.10.0-src.zip
+350914f9b70404781674f2f188f84d440d9d25da46ed9733b3f98269a510e033  pypy2-v5.10.0-win32.zip
+9afa1a36a5fc55ebc3e80576f05f44294f2b0de279862286fe00f5ee139965b1  pypy2-v5.10.0-ppc64.tar.bz2
+2c32ccfa80e3e2ec56b4cc848526046d7b0de1f2f1a92b0cedeb414ec76745ab  pypy2-v5.10.0-ppc64le.tar.bz2
+
+</code></pre>
+
+
+            <h4>pypy2.7-6.0.0 sha256:</h4>
+            <pre><code>
+ad1082d4328ae8f32617b14628648583b82b6d29df3aa42b97bd1853c08c4bc8  pypy2-v6.0.0-linux32.tar.bz2
+6cbf942ba7c90f504d8d6a2e45d4244e3bf146c8722d64e9410b85eac6b5af67  pypy2-v6.0.0-linux64.tar.bz2
+924ca3f90aa28e8961859508c25752c95253b842318a0f267267ffe90f56a916  pypy2-v6.0.0-linux-armel.tar.bz2
+6506ce739e31981e5596d3cc2e2c7f5b086ee77bb4d97773082b62b2f283eef2  pypy2-v6.0.0-linux-armhf-raspbian.tar.bz2
+d7dc443e6bb9a45212e8d8f5a63e9f6ce23f1d88c50709efea1c75b76c8bc186  pypy2-v6.0.0-osx64.tar.bz2
+bf155c8ac2f757d24361591080a9f4f95424a07e30f943f7d751d96442e0f36a  pypy2-v6.0.0-s390x.tar.bz2
+6097ec5ee23d0d34d8cd27a1072bed041c8a080ad48731190a03a2223029212d  pypy2-v6.0.0-src.tar.bz2
+3553b19447cdb627919cc37d76979e15dc755b085e979f5ffa9b25933ec343b3  pypy2-v6.0.0-src.zip
+6e2210dae1ae721ed4eb9cba19f15453514b64111511c84f24843c4fdefdaf7f  pypy2-v6.0.0-win32.zip
+
+</code></pre>
+            <h4>pypy 3.5-v5.10.0 sha256:</h4>
+            <pre><code>
+f5ced20934fff78e55c72aa82a4703954349a5a8099b94e77d74b96a94326a2c  pypy3-v5.10.0-osx64-2.tar.bz2
+
+</code></pre>
+
+
+            <h4>pypy 3.5-v5.10.1 sha256:</h4>
+            <pre><code>
+a6ceca9ee5dc511de7902164464b88311fec9366c5673d0c00528eda862bbe54  pypy3-v5.10.1-linux32.tar.bz2
+75a276e1ee1863967bbacb70c5bff636de200768c0ec90e72f7ec17aace0aefe  pypy3-v5.10.1-linux64.tar.bz2
+5065e9ad958d06b9612ba974f43997d20168d4245c054dd43270e4b458782282  pypy3-v5.10.1-linux-armel.tar.bz2
+203dd595fbad7055340b23326f20c85b0d6c11c4877e3559a437611fc2ac40c2  pypy3-v5.10.1-linux-armhf-raspbian.tar.bz2
+52f006611513c995fdebba6e72d394186d4085460408cbbe086e5467bf3fb9b6  pypy3-v5.10.1-osx64.tar.bz2
+f5548e06e2fc0c24ec8b6e3c5b09f90081818f7caa3e436dc312592611724713  pypy3-v5.10.1-src.tar.bz2
+182378d7aab395ee6cf539fb011ec0e384624282834aaaed4a663972a5aa8797  pypy3-v5.10.1-src.zip
+4edf4f021689a529e5a631c5cca72a1a9dc19a6ea2091e64289cdd5b60eaf929  pypy3-v5.10.1-win32.zip
+9ce98481cddede40a3357f7462f2c894bb96f178e2e8715d04feda1476ec1563  pypy3-v5.10.1-s390x.tar.bz2
+
+</code></pre>
+
+
+            <h4>pypy 3.5-v6.0.0 sha256:</h4>
+            <pre><code>
+b04eeee5160e6cb5f8962de80f077ea1dc7be34e77d74bf075519c23603f5ff9  pypy3-v6.0.0-linux32.tar.bz2
+4cfffa292b9ef34bb6ba39cdbaa196c5c5cbbc5aa3faaa157cf45d7e34027048  pypy3-v6.0.0-linux64.tar.bz2
+6a6888a55192f58594838b8b3d2e7daaad43d3bf4293afab3dd8987d0bbd1124  pypy3-v6.0.0-linux-armel.tar.bz2
+8a0420dda23413925400538bbfc0cff2bbb2ab0de984eef6faaeab6d3309cbcc  pypy3-v6.0.0-linux-armhf-raspbian.tar.bz2
+938b8034e30f5f5060d2a079070c56c3be5559bc7ae9cc0c8395fe6fc45cfe4c  pypy3-v6.0.0-osx64.tar.bz2
+f0a3097cf74d6b1fb3ae2a060384e72b7868ca76cd04584336b417e9982ec0a5  pypy3-v6.0.0-s390x.tar.bz2
+ed8005202b46d6fc6831df1d13a4613bc40084bfa42f275068edadf8954034a3  pypy3-v6.0.0-src.tar.bz2
+8cd3cc2ef362e774edf9c7a6b79dbe42fff75217c5ed96b235a0a792e4421dc4  pypy3-v6.0.0-src.zip
+72dddb3746a51f7672c77d619c818e27efe899e08ae82762448e50dbfdc2f5f3  pypy3-v6.0.0-win32.zip
+
+</code></pre>
+
+            <hr>
+        </section>
+
+    </main>
+    <footer>
+        <a class="display-block text-center mb-3" href="#top"><img src="img/pypy-logo-nav-grey.png" alt="PyPy logo" width="54px"></a>
+    </footer>
+    <script type="text/javascript" src="js/styles.js"></script>
+</body>
+
+</html>
