@@ -437,11 +437,12 @@ code {
   border-radius: .4rem;
   font-size: 86%;
   margin: 0 .2rem;
-  padding: .2rem .5rem;
-  white-space: nowrap;
-  border-left: 0.3rem solid #1890ff; }
+  padding: 0.8rem 1rem;
+  white-space: nowrap; }
 
 pre {
+  border-left: 0.3rem solid #1890ff;
+  padding-left: 2rem;
   background: #f4f5f6;
   overflow-y: hidden; }
   pre > code {

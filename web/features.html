@@ -1,1 +1,203 @@
-features
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>PyPy - Features</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="What is PyPy and what are it's features" />
+    <meta name="keywords" content="PyPy, Python, CPython, RPython, JIT, fast, alternate implementation, Open Source">
+    <meta name="author" content="The PyPy team" />
+    <meta name="copyright" content="MIT" />
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
+</head>
+
+<body id="top">
+    <header>
+        <nav class="container">
+            <ul class="navbar js-navbar">
+                <li><a class="navbar-item" href="index.html"><img src="img/pypy-logo-nav.png" alt="PyPy home"></a></li>
+                <!-- <li><a class="navbar-item" href="features.html">What is PyPy?</a></li> -->
+                <li><a class="navbar-item" href="downloads.html">Download</a></li>
+                <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li>
+                <li><a class="navbar-item" href="performance.html">Performance</a></li>
+                <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
+                <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
+                <li><a class="navbar-item" href="contact.html">Contact us</a></li>
+                <li><a class="navbar-item navbar-item-icon js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section id="what-is-pypy">
+            <h1>What is PyPy?</h1>
+            <p>
+                <strong>PyPy</strong> is a replacement for <a href="https://en.wikipedia.org/wiki/CPython">CPython</a>.
+                It is built using the RPython language that was co-developed with it.<br>
+                The main reason to use it instead of CPython is speed: it runs generally faster (see next section).
+            </p>
+            <p>
+                <strong>PyPy</strong> implements <strong>Python 2.7.13</strong> and <strong>3.5.3</strong>.
+                It supports all of the core language, passing the Python test suite
+                (with minor modifications that were already accepted in the main python
+                in newer versions). It supports most of the commonly used Python
+                standard library modules. For known differences with CPython, see our
+                <a href="compatibility.html">compatibility</a> page.
+            </p>
+            <p>
+                The following CPU architectures are supported and maintained:
+            </p>
+            <ul class="ml-3">
+                <li><a href="http://en.wikipedia.org/wiki/IA-32">x86 (IA-32)</a> and <a href="http://en.wikipedia.org/wiki/X86_64">x86_64</a></li>
+                <li><a href="http://en.wikipedia.org/wiki/ARM">ARM</a> platforms (ARMv6 or ARMv7, with VFPv3)</li>
+                <li><a href="https://de.wikipedia.org/wiki/PowerPC">PowerPC</a> 64bit both little and big endian</li>
+                <li><a href="https://de.wikipedia.org/wiki/System/390">System Z (s390x)</a></li>
+            </ul>
+            <p>
+                PyPy's x86 version runs on several operating systems, such as Linux
+                (32/64 bits), Mac OS X (64 bits), Windows (32 bits), OpenBSD, FreeBSD.
+                All non-x86 versions are only supported on Linux.
+            </p>
+            <p>
+                If you are interested in helping to move forward, see our <a href="how-to-help.html">How to help</a> page.
+            </p>
+        </section>
+
+        <hr class="my-4">
+
+        <section id="features">
+            <h1>The main features of PyPy</h1>
+
+            <div class="mb-4">
+                <h2>Speed</h2>
+                <p>
+                    Our <a href="download.html#with-a-jit-compiler">main executable</a> comes with a
+                    <a href="https://en.wikipedia.org/wiki/Just-in-time_compilation">Just-in-Time compiler</a>.
+                    It is <a href="http://speed.pypy.org/">really fast</a> in running most benchmarks &ndash; including very large and
+                    complicated Python applications, not just 10-liners.
+                    <!-- TODO maybe add or link to a list of large python projects using pypy-->
+                </p>
+                <p class="mb-1">
+                    There are two cases that you should be aware where PyPy will <strong>not</strong> be
+                    able to speed up your code:
+                </p>
+                <ul class="ml-3">
+                    <li>Short-running processes: if it doesn't run for at least a few seconds,
+                        then the JIT compiler won't have enough time to warm up.</li>
+                    <li>If all the time is spent in run-time libraries (i.e. in C functions),
+                        and not actually running Python code, the JIT compiler will not help.</li>
+                </ul>
+                <p>
+                    So the case where PyPy works best is when executing long-running
+                    programs where a significant fraction of the time is spent executing
+                    Python code. This is the case covered by the majority of <a href="http://speed.pypy.org/">our
+                        benchmarks</a>, but not all of them &ndash; the goal of PyPy is to get speed
+                    but still support (ideally) any Python program.
+                </p>
+                <hr>
+            </div>
+
+            <div class="mb-4">
+                <h2>Memory usage</h2>
+                <p>
+                    Memory-hungry Python programs (several hundreds of MBs or more) might
+                    end up taking less space than they do in CPython. It is not always
+                    the case, though, as it depends on a lot of details. Also note that
+                    the baseline is higher than CPython's.
+                </p>
+                <hr>
+            </div>
+
+            <div class="mb-4">
+                <h2>Stackless</h2>
+                <p>
+                    Support for <a href="http://www.stackless.com/">Stackless</a> and greenlets are now integrated in the normal
+                    PyPy. More detailed information is available <a href="http://doc.pypy.org/en/latest/stackless.html">here</a>.
+                </p>
+                <hr>
+            </div>
+
+            <div class="mb-4">
+                <h2>Other features</h2>
+                <p>PyPy has many secondary features and semi-independent
+                    projects. We will mention here:</p>
+                <ul class="ml-3">
+                    <li>
+                        <strong>Other languages:</strong> we also implemented other languages that makes
+                        use of our RPython toolchain: <a href="https://bitbucket.org/cfbolz/pyrolog/">Prolog</a> (almost complete), as
+                        well as <a href="https://bitbucket.org/pypy/lang-smalltalk/">Smalltalk</a>, <a href="https://bitbucket.org/pypy/lang-js/">JavaScript</a>, <a href="https://bitbucket.org/pypy/lang-io/">Io</a>,
+                        <a href="https://bitbucket.org/pypy/lang-scheme/">Scheme</a> and <a href="https://bitbucket.org/pypy/lang-gameboy/">Gameboy</a>.
+                    </li>
+                    <li>
+                        There is also a Ruby implementation called <a href="http://topazruby.com/">Topaz</a> and a PHP implementation
+                        called <a href="http://www.hippyvm.com/">HippyVM</a>.
+                    </li>
+                </ul>
+                <hr>
+            </div>
+
+            <div class="mb-5">
+                <h2>Sandboxing</h2>
+
+                <p>
+                    PyPy's <em>sandboxing</em> is a working prototype for the idea of running untrusted
+                    user programs. Unlike other sandboxing approaches for Python, PyPy's does not
+                    try to limit language features considered &ldquo;unsafe&rdquo;. Instead we replace all
+                    calls to external libraries (C or platform) with a stub that communicates
+                    with an external process handling the policy.
+                </p>
+
+                <blockquote>
+                    <strong>Please be aware that it is a prototype only.</strong> <br>
+                    <em>It needs work to become more complete, and you are welcome to help. In particular, almost none
+                        of the extension modules work (not even</em> <code>time</code> <em>), and</em>
+                    <code>pypy_interact</code>
+                    <em>is merely a demo. Also, a more complete system would include a way
+                        to do the same as</em>
+                    <code>pypy_interact</code> <em>from other languages than Python,
+                        to embed a sandboxed interpreter inside programs written in other
+                        languages.</em>
+                </blockquote>
+
+                <p>
+                    To run the sandboxed process, you need to get the full sources and
+                    build <code>pypy-sandbox</code> from it (see <a href="download.html#building-from-source">Building from source</a>). These
+                    instructions give you a <code>pypy-c</code> that you should rename to
+                    <code>pypy-sandbox</code> to avoid future confusion. Then run:
+                </p>
+                <pre><code>
+cd pypy/sandbox
+pypy_interact.py path/to/pypy-sandbox
+# don't confuse it with pypy/goal/pyinteractive.py!
+                </code></pre>
+                <p>You get a fully sandboxed interpreter, in its own filesystem hierarchy
+                    (try <code>os.listdir('/')</code>). For example, you would run an untrusted
+                    script as follows:</p>
+                <pre><code>
+mkdir virtualtmp
+cp untrusted.py virtualtmp/
+pypy_interact.py --tmp=virtualtmp pypy-sandbox /tmp/untrusted.py
+                </code></pre>
+                <p>Note that the path <code>/tmp/untrusted.py</code> is a path inside the sandboxed
+                    filesystem. You don't have to put <code>untrusted.py</code> in the real <code>/tmp</code>
+                    directory at all.</p>
+                <p>To read more about its features, try <code>pypy_interact.py --help</code>or go to
+                    <a href="http://pypy.readthedocs.org/en/latest/sandbox.html">our documentation site</a>.</p>
+            </div>
+            <hr>
+        </section>
+
+    </main>
+    <footer>
+        <a class="display-block text-center mb-3" href="#top"><img src="img/pypy-logo-nav-grey.png" alt="PyPy logo" width="54px"></a>
+    </footer>
+    <script type="text/javascript" src="js/styles.js"></script>
+</body>
+
+</html>

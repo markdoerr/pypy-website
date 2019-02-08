@@ -8,21 +8,34 @@
 
     <title>PyPy - Contact</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="PyPy, a fast and compliant alternate implementation of the Python language" />
-    <meta name="keywords" content="PyPy, Python, CPython, RPython, JIT, fast, alternate implementation, Open Source">
-    <meta name="author" content="The PyPy Team" />
+    <meta name="description" content="Ways to contact the PyPy team and who they are" />
+    <meta name="keywords" content="PyPy, Python, CPython, RPython, JIT, fast, alternate implementation, Open Source, team, people, contact">
+    <meta name="author" content="The PyPy team" />
     <meta name="copyright" content="MIT" />
 
     <link rel="shortcut icon" href="img/favicon.ico">
     <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
 </head>
 
-<body>
+<body id="top">
     <header>
-
+        <nav class="container">
+            <ul class="navbar js-navbar">
+                <li><a class="navbar-item" href="index.html"><img src="img/pypy-logo-nav.png" alt="PyPy home"></a></li>
+                <li><a class="navbar-item" href="features.html">What is PyPy?</a></li>
+                <li><a class="navbar-item" href="downloads.html">Download</a></li>
+                <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li>
+                <li><a class="navbar-item" href="performance.html">Performance</a></li>
+                <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
+                <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
+                <!-- <li><a class="navbar-item" href="contact.html">Contact us</a></li> -->
+                <li><a class="navbar-item navbar-item-icon js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a></li>
+            </ul>
+        </nav>
     </header>
+
     <main class="container">
-        <section>
+        <section id="contact">
             <h1>Contact us</h1>
             <ul>
                 <li><strong>IRC:&nbsp;</strong><em>#pypy</em> on <em>irc.freenode.net</em></li>
@@ -36,7 +49,7 @@
         </section>
 
 
-        <section class="mt-5">
+        <section class="mt-5" id="people">
             <h1>People of PyPy</h1>
 
             <div class="person">
@@ -95,7 +108,7 @@
                     developer since 2006, working in various areas including the &ldquo;object oriented
                     backends&rdquo; for the CLI and JVM, the RPython translation framework, the Python
                     interpreter and the JIT compiler generator. Apart from PyPy, he is the author of
-                    other popular tools such as <em>pdb++</em>.
+                    other popular tools such as <code>pdb++</code>.
                 </p>
             </div>
             <div class="person">
@@ -185,7 +198,7 @@
 
     </main>
     <footer>
-        <a class="display-block text-center mb-3" href="https://pypy.org/"><img src="img/logo-with-text-grey-small.png" alt="PyPy logo" width="60px"></a>
+        <a class="display-block text-center mb-3" href="#top"><img src="img/pypy-logo-nav-grey.png" alt="PyPy logo" width="54px"></a>
     </footer>
     <script type="text/javascript" src="js/styles.js"></script>
 </body>
