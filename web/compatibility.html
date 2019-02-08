@@ -1,1 +1,182 @@
-compatibility
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>PyPy - Compatibility</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Download PyPy" />
+    <meta name="keywords" content="PyPy, Python, CPython, RPython, JIT, fast, alternate implementation, Open Source, download, build from source, compatibility">
+    <meta name="author" content="The PyPy team" />
+    <meta name="copyright" content="MIT" />
+
+    <link rel="shortcut icon" href="img/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/styles.min.css" />
+</head>
+
+<body id="top">
+    <header>
+        <nav class="container">
+            <ul class="navbar js-navbar">
+                <li><a class="navbar-item" href="index.html"><img src="img/pypy-logo-nav.png" alt="PyPy home"></a></li>
+                <li><a class="navbar-item" href="features.html">What is PyPy?</a></li>
+                <li><a class="navbar-item" href="downloads.html">Download</a></li>
+                <!-- <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li> -->
+                <li><a class="navbar-item" href="performance.html">Performance</a></li>
+                <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
+                <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
+                <li><a class="navbar-item" href="contact.html">Contact us</a></li>
+                <li><a class="navbar-item navbar-item-icon js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container">
+        <h1>Compatibility</h1>
+
+        <p>
+            PyPy implements the Python language version 2.7.13. It supports all of the core
+            language, passing Python test suite (with minor modifications that were
+            already accepted in the main python in newer versions). It supports most
+            of the commonly used Python <a href="http://docs.python.org/library/">standard library modules</a>; details below.
+        </p>
+        <p>
+            PyPy3 implements the Python language version 3.5.3. It has been released,
+            but Python is a large language and it is quite possible that a few things are missing.
+        </p>
+        <p><a href="http://packages.pypy.org">List of installable top 1000 PyPI packages</a></p>
+        <p>PyPy has support for the <a href="http://docs.python.org/c-api/">CPython C API</a>, however there are constructs
+            that are <cite>not compatible</cite>. We strongly advise use of <a href="http://cffi.readthedocs.org/">CFFI</a>
+            instead. CFFI come builtin with PyPy. Many libraries will require
+            a bit of effort to work, but there are known success stories. Check out
+            PyPy blog for updates, as well as the <a href="https://bitbucket.org/pypy/compatibility/wiki/Home">Compatibility Wiki</a>.
+        </p>
+        <p>
+            C extensions need to be recompiled for PyPy in order to work. Depending on
+            your build system, it might work out of the box or will be slightly harder.
+        </p>
+        <p>
+            Standard library modules supported by PyPy. Note that large parts of python
+            library are implemented in pure python, so they don't have to be listed
+            there. Please just check if it imports. If it imports, it should work.
+        </p>
+        <ul class="ml-3">
+            <li>
+                <code>__builtin__, __pypy__, _ast, _cffi_backend, _codecs, _collections, _continuation, _csv, _file, _hashlib, _io, _locale, _lsprof, _md5, _minimal_curses, _multibytecodec, _multiprocessing, _numpypy, _pickle_support, _pypyjson, _random, _rawffi, _sha, _socket, _sre,
+                        _ssl, _struct, _testing, _warnings, _weakref, array, binascii, bz2, cStringIO, cmath, cppyy, cpyext, crypt, errno, exceptions, fcntl, gc, imp, itertools, marshal, math, mmap, operator, parser, posix, pwd, pyexpat, pypyjit, select, signal, symbol, sys, termios, thread, time, token,
+                        unicodedata, zipimport, zlib</code>
+            </li>
+        </ul>
+        <p>Supported, but written in pure Python:</p>
+        <ul class="ml-3">
+            <li><code>cPickle, ctypes, datetime, dbm, _functools, grp, readline, resource, sqlite3, syslog</code></li>
+        </ul>
+        <p>All modules that are pure python in CPython of course work.</p>
+        <p>
+            Python libraries known to work under PyPy (the list is not exhaustive).
+            A <a href="http://packages.pypy.org">fuller list</a> is available.
+        </p>
+        <ul class="ml-3">
+            <li>ctypes</li>
+            <li>django</li>
+            <li>sqlalchemy</li>
+            <li>flask</li>
+            <li>twisted</li>
+            <li>pylons</li>
+            <li>divmod's nevow</li>
+            <li>pyglet</li>
+            <li>Pillow (the PIL fork)</li>
+            <li><a href="https://github.com/amauryfa/lxml/tree/cffi/">lxml</a></li>
+            <li>NumPy</li>
+        </ul>
+        <p>
+            The main difference that is not going to be fixed is that PyPy does
+            not support refcounting semantics. The following code won't fill the
+            file immediately, but only after a certain period of time, when the GC
+            does a collection:
+        </p>
+        <pre><code class="hljs python">
+open(<span class="hljs-string">"filename"</span>, <span class="hljs-string">"w"</span>).write(<span class="hljs-string">"stuff"</span>)
+        </code></pre>
+
+        <p>The proper fix is</p>
+        <pre><code class="hljs python">
+f = open(<span class="hljs-string">"filename"</span>, <span class="hljs-string">"w"</span>)
+f.write(<span class="hljs-string">"stuff"</span>)
+f.close()
+        </code></pre>
+
+        <p>or using the <code>with</code> keyword</p>
+        <pre><code class="hljs python">
+<span class="hljs-keyword">with</span> open(<span class="hljs-string">"filename"</span>, <span class="hljs-string">"w"</span>) <span class="hljs-keyword">as</span> f:
+f.write(<span class="hljs-string">"stuff"</span>)
+        </code></pre>
+
+        <p>
+            The same problem&ndash;not closing your files&ndash;can also show up if your
+            program opens a large number of files without closing them explicitly.
+            In that case, you can easily hit the system limit on the number of file
+            descriptors that are allowed to be opened at the same time.
+        </p>
+        <p>Since release 5.4, PyPy can be run with the command-line option <code>-X track-resources</code>
+            (as in, <code>pypy -X track-resources myprogram.py</code>).
+            This produces a ResourceWarning when the GC closes a non-closed file or
+            socket. The traceback for the place where the file or socket was
+            allocated is given as well, which aids finding places where <code>close()</code>
+            is missing.
+        </p>
+        <p>
+            Similarly, remember that you must <code>close()</code> a non-exhausted
+            generator in order to have its pending <code>finally</code> or <code>with</code>
+            clauses executed immediately:
+        </p>
+        <pre><code class="hljs python">
+<span class="hljs-keyword">def</span> <span class="hljs-title">mygen</span><span class="hljs-params">()</span>:</span>
+    <span class="hljs-keyword">with</span> foo:
+        <span class="hljs-keyword">yield</span> <span class="hljs-number">42</span>
+
+<span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> mygen():
+    <span class="hljs-keyword">if</span> x == <span class="hljs-number">42</span>:
+        <span class="hljs-keyword">break</span>    <span class="hljs-comment"># foo.__exit__ is not run immediately!</span>
+
+<span class="hljs-comment"># fixed version:</span>
+gen = mygen()
+<span class="hljs-keyword">try</span>:
+    <span class="hljs-keyword">for</span> x <span class="hljs-keyword">in</span> gen:
+        <span class="hljs-keyword">if</span> x == <span class="hljs-number">42</span>:
+            <span class="hljs-keyword">break</span>
+<span class="hljs-keyword">finally</span>:
+    gen.close()              
+        </code></pre>
+
+        <p>
+            More generally, <code>__del__()</code> methods are not executed as predictively
+            as on CPython: they run &ldquo;some time later&rdquo; in PyPy (or not at all if
+            the program finishes running in the meantime). See <a href="http://pypy.readthedocs.org/en/latest/cpython_differences.html#differences-related-to-garbage-collection-strategies">more details
+                here</a>.
+        </p>
+        <p>
+            Note that PyPy returns unused memory to the operating system if there
+            is a madvise() system call (at least Linux, OS X, BSD) or on Windows. It is
+            important to realize that you may not see this in <code>top</code>. The unused
+            pages are marked with <code>MADV_FREE</code>, which tells the system &ldquo;if you
+            need more memory at some point, grab this page&rdquo;. As long as memory is
+            plentiful, the <code>RES</code> column in <code>top</code> might remains high. (Exceptions to
+            this rule are systems with no <code>MADV_FREE</code>, where we use
+            <code>MADV_DONTNEED</code>, which forcefully lowers the <code>RES</code>. This includes
+            Linux &lt;= 4.4.)
+        </p>
+        <p>A more complete list of known differences is available at <a href="http://pypy.readthedocs.org/en/latest/cpython_differences.html">our dev site</a>.</p>
+
+        <hr>
+    </main>
+    <footer>
+        <a class="display-block text-center mb-3" href="#top"><img src="img/pypy-logo-nav-grey.png" alt="PyPy logo" width="54px"></a>
+    </footer>
+    <script type="text/javascript" src="js/styles.js"></script>
+</body>
+
+</html>

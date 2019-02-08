@@ -1,0 +1,104 @@
+// styles from https://highlightjs.org/
+
+                                        //atom-one-light
+$highlight-js-background:             #f4f5f6; //#fafafa
+$highlight-js-default-color:          #9006b3; //#383a42
+//$highlight-js-color-mono-2:           #686b77; //#686b77
+$highlight-js-color-comments:         #bbbcc2; //#a0a1a7
+$highlight-js-literals:               #009c15; //#0184bb
+$highlight-js-symbols:                #2263f0; //#4078f2
+$highlight-js-color-keyword:          #dd4600; //#a626a4  
+$highlight-js-regex-meta-attribute:   #2e912c; //#50a14f
+$highlight-js-color-name-subst:       #e45649; //#e45649
+$highlight-js-type-number-attr:       #b97f00; //#986801
+$highlight-js-class:                  #c1ae01; //#c18401
+
+.hljs {
+  display: block;
+  overflow-x: auto;
+  padding: 0.5em;
+  color: $highlight-js-default-color;
+  background: $highlight-js-background;
+}
+
+.hljs-comment,
+.hljs-quote {
+  color: $highlight-js-color-comments;
+  font-style: italic;
+}
+
+.hljs-doctag,
+.hljs-keyword,
+.hljs-formula {
+  color: $highlight-js-color-keyword;
+}
+
+.hljs-section,
+.hljs-name,
+.hljs-selector-tag,
+.hljs-deletion,
+.hljs-subst {
+  color: $highlight-js-color-name-subst;
+}
+
+.hljs-literal {
+  color: $highlight-js-literals;
+}
+
+.hljs-string,
+.hljs-regexp,
+.hljs-addition,
+.hljs-attribute,
+.hljs-meta-string {
+  color: $highlight-js-regex-meta-attribute;
+}
+
+.hljs-built_in,
+.hljs-class .hljs-title {
+  color: $highlight-js-class;
+}
+
+.hljs-attr,
+.hljs-variable,
+.hljs-template-variable,
+.hljs-type,
+.hljs-selector-class,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-number {
+  color: $highlight-js-type-number-attr;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link,
+.hljs-meta,
+.hljs-selector-id,
+.hljs-title {
+  color: $highlight-js-symbols;
+}
+
+.hljs-emphasis {
+  font-style: italic;
+}
+
+.hljs-strong {
+  font-weight: bold;
+}
+
+.hljs-link {
+  text-decoration: underline;
+}
+
+// old defaults                atom-one-light
+//$highlight-js-color-base:    #fafafa
+//$highlight-js-color-mono-1:  #383a42
+//$highlight-js-color-mono-2:  #686b77
+//$highlight-js-color-mono-3:  #a0a1a7
+//$highlight-js-color-hue-1:   #0184bb
+//$highlight-js-color-hue-2:   #4078f2
+//$highlight-js-color-hue-3:   #a626a4  
+//$highlight-js-color-hue-4:   #50a14f
+//$highlight-js-color-hue-5:   #e45649
+//$highlight-js-color-hue-6:   #986801
+//$highlight-js-color-hue-7:   #c18401
