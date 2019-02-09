@@ -963,6 +963,17 @@ img {
 .display-table {
   display: table; }
 
+.clearfix:after {
+  clear: both;
+  content: ' ';
+  display: table; }
+
+.float-left {
+  float: left; }
+
+.float-right {
+  float: right; }
+
 .container {
   margin: 0 auto;
   max-width: 112.0rem;
