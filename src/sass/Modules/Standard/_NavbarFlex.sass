@@ -4,6 +4,10 @@
 
 $navbar-collapse-width: 60rem
 $navbar-item-icon-color: #fff
+$navbar-item-active-color: $base-color-primary
+$navbar-item-active-hover-color: $base-color-secondary
+
+
 $navbar-item-bg-color: rgba(255, 255, 255, 0.98)
 
 
@@ -13,6 +17,7 @@ $navbar-item-bg-color: rgba(255, 255, 255, 0.98)
     display: flex
     justify-content: space-between
     flex-direction: row
+    margin-top: 1rem
     ul
         list-style: none
 
@@ -20,6 +25,12 @@ $navbar-item-bg-color: rgba(255, 255, 255, 0.98)
     display: flex
     padding: 0.5rem 0.66rem
     margin: 0 0.2rem
+
+.nav-item-active
+    border-radius: .4rem
+    border: 0.1rem solid $navbar-item-active-color
+    &:hover
+        border-color: $navbar-item-active-hover-color
 
 .navbar-item-icon
         display: none

@@ -1221,7 +1221,8 @@ img {
   align-items: center;
   display: flex;
   justify-content: space-between;
-  flex-direction: row; }
+  flex-direction: row;
+  margin-top: 1rem; }
   .navbar ul {
     list-style: none; }
 
@@ -1229,6 +1230,12 @@ img {
   display: flex;
   padding: 0.5rem 0.66rem;
   margin: 0 0.2rem; }
+
+.nav-item-active {
+  border-radius: .4rem;
+  border: 0.1rem solid #1890ff; }
+  .nav-item-active:hover {
+    border-color: #606c76; }
 
 .navbar-item-icon {
   display: none;
