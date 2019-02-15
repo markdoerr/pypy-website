@@ -22,20 +22,20 @@
         <nav class="container">
             <ul class="navbar js-navbar">
                 <li><a class="navbar-item" href="index.html"><img src="img/pypy-logo-nav.png" alt="PyPy home"></a></li>
-                <li><a class="navbar-item nav-item-active" href="features.html">What is PyPy?</a></li>
+                <li><a class="navbar-item nav-item-active" href="features.html">Features</a></li>
                 <li><a class="navbar-item" href="downloads.html">Download</a></li>
                 <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li>
                 <li><a class="navbar-item" href="performance.html">Performance</a></li>
                 <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
                 <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
                 <li><a class="navbar-item" href="contact.html">Contact us</a></li>
-                <li><a class="navbar-item navbar-item-icon js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a></li>
             </ul>
+            <a class="navbar-menu js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a>
         </nav>
     </header>
 
     <main class="container">
-        <section id="what-is-pypy">
+        <section class="mt-3" id="what-is-pypy">
             <h1>What is PyPy?</h1>
             <p>
                 <strong>PyPy</strong> is a replacement for <a href="https://en.wikipedia.org/wiki/CPython">CPython</a>.
@@ -53,7 +53,7 @@
             <p>
                 The following CPU architectures are supported and maintained:
             </p>
-            <ul class="ml-3">
+            <ul>
                 <li><a href="http://en.wikipedia.org/wiki/IA-32">x86 (IA-32)</a> and <a href="http://en.wikipedia.org/wiki/X86_64">x86_64</a></li>
                 <li><a href="http://en.wikipedia.org/wiki/ARM">ARM</a> platforms (ARMv6 or ARMv7, with VFPv3)</li>
                 <li><a href="https://de.wikipedia.org/wiki/PowerPC">PowerPC</a> 64bit both little and big endian</li>
@@ -67,14 +67,14 @@
             <p>
                 If you are interested in helping to move forward, see our <a href="how-to-help.html">How to help</a> page.
             </p>
+            <hr class="mt-5">
         </section>
 
-        <hr class="my-4">
-
         <section id="features">
+            <a class="float-right" href="#top">top</a>
             <h1>The main features of PyPy</h1>
 
-            <div class="mb-4">
+            <div>
                 <h2>Speed</h2>
                 <p>
                     Our <a href="download.html#default-with-a-jit-compiler">main executable</a> comes with a
@@ -87,7 +87,7 @@
                     There are two cases that you should be aware where PyPy will <strong>not</strong> be
                     able to speed up your code:
                 </p>
-                <ul class="ml-3">
+                <ul>
                     <li>Short-running processes: if it doesn't run for at least a few seconds,
                         then the JIT compiler won't have enough time to warm up.</li>
                     <li>If all the time is spent in run-time libraries (i.e. in C functions),
@@ -100,10 +100,10 @@
                         benchmarks</a>, but not all of them &ndash; the goal of PyPy is to get speed
                     but still support (ideally) any Python program.
                 </p>
-                <hr>
+                <hr class="mt-5">
             </div>
 
-            <div class="mb-4">
+            <div>
                 <h2>Memory usage</h2>
                 <p>
                     Memory-hungry Python programs (several hundreds of MBs or more) might
@@ -111,23 +111,23 @@
                     the case, though, as it depends on a lot of details. Also note that
                     the baseline is higher than CPython's.
                 </p>
-                <hr>
+                <hr class="mt-5">
             </div>
 
-            <div class="mb-4">
+            <div>
                 <h2>Stackless</h2>
                 <p>
                     Support for <a href="http://www.stackless.com/">Stackless</a> and greenlets are now integrated in the normal
                     PyPy. More detailed information is available <a href="http://doc.pypy.org/en/latest/stackless.html">here</a>.
                 </p>
-                <hr>
+                <hr class="mt-5">
             </div>
 
-            <div class="mb-4">
+            <div>
                 <h2>Other features</h2>
                 <p>PyPy has many secondary features and semi-independent
                     projects. We will mention here:</p>
-                <ul class="ml-3">
+                <ul>
                     <li>
                         <strong>Other languages:</strong> we also implemented other languages that makes
                         use of our RPython toolchain: <a href="https://bitbucket.org/cfbolz/pyrolog/">Prolog</a> (almost complete), as
@@ -139,10 +139,10 @@
                         called <a href="http://www.hippyvm.com/">HippyVM</a>.
                     </li>
                 </ul>
-                <hr>
+                <hr class="mt-5">
             </div>
 
-            <div class="mb-5">
+            <div>
                 <h2>Sandboxing</h2>
 
                 <p>
@@ -190,7 +190,7 @@ pypy_interact.py --tmp=virtualtmp pypy-sandbox /tmp/untrusted.py
                 <p>To read more about its features, try <code>pypy_interact.py --help</code>or go to
                     <a href="http://pypy.readthedocs.org/en/latest/sandbox.html">our documentation site</a>.</p>
             </div>
-            <hr>
+            <hr class="mt-5">
         </section>
 
     </main>

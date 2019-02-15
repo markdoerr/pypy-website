@@ -22,25 +22,25 @@
         <nav class="container">
             <ul class="navbar js-navbar">
                 <li><a class="navbar-item" href="index.html"><img src="img/pypy-logo-nav.png" alt="PyPy home"></a></li>
-                <li><a class="navbar-item" href="features.html">What is PyPy?</a></li>
+                <li><a class="navbar-item" href="features.html">Features</a></li>
                 <li><a class="navbar-item" href="downloads.html">Download</a></li>
                 <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li>
                 <li><a class="navbar-item nav-item-active" href="performance.html">Performance</a></li>
                 <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
                 <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
                 <li><a class="navbar-item" href="contact.html">Contact us</a></li>
-                <li><a class="navbar-item navbar-item-icon js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a></li>
             </ul>
+            <a class="navbar-menu js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a>
         </nav>
     </header>
 
     <main class="container">
 
 
-        <h1>Performance</h1>
-        <section id="contents">
+        <section class="mt-3" id="contents">
+            <h1>Performance</h1>
             <h2>Contents</h2>
-            <ul class="simple">
+            <ul>
                 <li><a href="#profiling-vmprof">Profiling: vmprof</a></li>
                 <li>
                     <a href="#optimization-strategy">Optimization strategy</a>
@@ -74,7 +74,7 @@
             </p>
         </section>
 
-        <hr>
+        <hr class="mt-5">
 
         <section id="profiling-vmprof">
             <span id="profiling"></span>
@@ -96,7 +96,7 @@
             </p>
         </section>
 
-        <hr>
+        <hr class="mt-5">
 
         <section id="optimization-strategy">
             <a class="float-right" href="#top">top</a>
@@ -213,7 +213,7 @@
             </div>
         </section>
 
-        <hr>
+        <hr class="mt-5">
 
         <section id="micro-tuning-tips">
             <a class="float-right" href="#top">top</a>
@@ -373,7 +373,7 @@ s = <span class="hljs-string">""</span>.join(parts)
             </div>
         </section>
 
-        <hr>
+        <hr class="mt-5">
 
         <section id="insider-s-point-of-view">
             <a class="float-right" href="#top">top</a>
@@ -479,6 +479,7 @@ s = <span class="hljs-string">""</span>.join(parts)
                 of PyPy. If you find some issue that is not documented here,
                 please report it to our <a href="https://bitbucket.org/pypy/pypy/issues?status=new&amp;status=open">bug tracker</a> for investigation.
             </p>
+            <hr class="mt-5">
         </section>
 
     </main>

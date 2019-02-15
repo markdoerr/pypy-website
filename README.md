@@ -2,7 +2,7 @@
 
 ### Dev Scripts
 ```bash
-# Serve side to to http://localhost:8080/
+# Serve site to to http://localhost:8080/
 npm run serve
 
 # Compile sass with

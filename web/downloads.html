@@ -22,25 +22,25 @@
         <nav class="container">
             <ul class="navbar js-navbar">
                 <li><a class="navbar-item" href="index.html"><img src="img/pypy-logo-nav.png" alt="PyPy home"></a></li>
-                <li><a class="navbar-item" href="features.html">What is PyPy?</a></li>
+                <li><a class="navbar-item" href="features.html">Features</a></li>
                 <li><a class="navbar-item nav-item-active" href="downloads.html">Download</a></li>
                 <li><a class="navbar-item" href="compatibility.html">Compatibility</a></li>
                 <li><a class="navbar-item" href="performance.html">Performance</a></li>
                 <li><a class="navbar-item" href="http://doc.pypy.org">Docs</a></li>
                 <li><a class="navbar-item" href="http://morepypy.blogspot.com">Blog</a></li>
                 <li><a class="navbar-item" href="contact.html">Contact us</a></li>
-                <li><a class="navbar-item navbar-item-icon js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a></li>
             </ul>
+            <a class="navbar-menu js-navbar-toggler shadow-primary" href="#"><i class="icon-menu"></i></a>
         </nav>
     </header>
 
     <main class="container">
-        <section id="quick-start">
+        <section class="mt-3" id="quick-start">
             <h2>Quick-start</h2>
-            <ul class="ml-3">
+            <ul>
                 <li>
                     <a href="#download">Download</a>
-                    <ul class="ml-3">
+                    <ul>
                         <li><a href="#default-with-a-jit-compiler">Default (with a JIT Compiler)</a></li>
                         <li><a href="#other-versions">Other versions</a></li>
                     </ul>
@@ -54,7 +54,7 @@
                 <li><a href="#packaging">Packaging</a></li>
                 <li><a href="#checksums">Checksums</a></li>
             </ul>
-            <hr>
+            <hr class="mt-5">
         </section>
 
 
@@ -70,7 +70,7 @@
                 We provide binaries for x86, ARM, PPC and s390x running on different operating systems such as
                 Linux, Mac OS X and Windows:
             </p>
-            <ul class="ml-3">
+            <ul>
                 <li>the Python2.7 compatible release — <strong>PyPy2.7 v6.0</strong> — (<a href="http://doc.pypy.org/en/latest/release-v6.0.0.html">what's new in PyPy2.7?</a>)</li>
                 <li>the Python3.5 compatible release — <strong>PyPy3.5 v6.0</strong> — (<a href="http://doc.pypy.org/en/latest/release-v6.0.0.html">what's new in PyPy3.5?</a>).</li>
                 <li>the Python2.7 Software Transactional Memory special release — <strong>PyPy-STM 2.5.1</strong> (Linux x86-64 only)</li>
@@ -96,7 +96,7 @@
                         them</strong> unless you're ready to hack your system by adding symlinks to the
                     libraries it tries to open. There are better solutions:
                 </p>
-                <ul class="ml-3">
+                <ul>
                     <li>use Squeaky's <a href="https://github.com/squeaky-pl/portable-pypy#portable-pypy-distribution-for-linux">portable Linux binaries</a>.</li>
                     <li>or download PyPy from your release vendor (usually an outdated
                         version): <a href="http://packages.ubuntu.com/search?keywords=pypy&amp;searchon=names">Ubuntu</a> (<a href="https://launchpad.net/~pypy/+archive/ppa">PPA</a>), <a href="http://packages.debian.org/sid/pypy">Debian</a>,
@@ -111,7 +111,7 @@
             <div id="python2-7-compatible-pypy-6-0-0">
                 <span id="release"></span>
                 <h3>Python2.7 compatible PyPy 6.0.0</h3>
-                <ul class="ml-3">
+                <ul>
                     <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-linux32.tar.bz2">Linux x86 binary (32bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
                     <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-linux64.tar.bz2">Linux x86-64 binary (64bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
                     <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy2-v6.0.0-linux-armhf-raspbian.tar.bz2">ARM Hardfloat Linux binary (ARMHF/gnueabihf, Raspbian)</a> <sup>(see * below)</sup></li>
@@ -133,7 +133,7 @@
 
             <div id="python-3-5-3-compatible-pypy3-5-v6-0-0">
                 <h3>Python 3.5.3 compatible PyPy3.5 v6.0.0</h3>
-                <ul class="ml-3">
+                <ul>
                     <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-linux32.tar.bz2">Linux x86 binary (32bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
                     <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-linux64.tar.bz2">Linux x86-64 binary (64bit, built on Ubuntu 12.04 - 16.04)</a> <sup>(see * below)</sup></li>
                     <li><a href="https://bitbucket.org/pypy/pypy/downloads/pypy3-v6.0.0-linux-armhf-raspbian.tar.bz2">ARM Hardfloat Linux binary (ARMHF/gnueabihf, Raspbian)</a> <sup>(see * below)</sup></li>
@@ -161,15 +161,16 @@
                     <a href="https://github.com/squeaky-pl/portable-pypy#portable-pypy-distribution-for-linux">portable Linux binaries</a>.
                 </p>
             </div>
-            <hr>
+            <hr class="mt-5">
         </section>
 
 
         <section id="other-versions">
             <span id="other-versions-without-a-jit"></span>
+            <a class="float-right" href="#top">top</a>
             <h2>Other versions</h2>
             <p>The other versions of PyPy are:</p>
-            <ul class="ml-3">
+            <ul>
                 <li>
                     <strong>PyPy-STM 2.5.1</strong> This is a special version of PyPy! See the <a href="http://doc.pypy.org/en/latest/stm.html">Software Transactional
                         Memory</a> (STM) documentation. <br>
@@ -196,11 +197,12 @@
                     <a href="https://bitbucket.org/pypy/pypy/downloads/pypy-1.8-sandbox-linux.tar.bz2">64bit</a>).
                 </li>
             </ul>
-            <hr>
+            <hr class="mt-5">
         </section>
 
 
         <section id="installing">
+            <a class="float-right" href="#top">top</a>
             <h2>Installing</h2>
             <p>
                 All binary versions are packaged in a <code>tar.bz2</code> or <code>zip</code> file. When
@@ -211,10 +213,11 @@
                 not move or copy the executable <code>pypy</code> outside the tree &ndash; put
                 a symlink to it, otherwise it will not find its libraries.
             </p>
-            <hr>
+            <hr class="mt-5">
         </section>
 
         <section id="installing-modules">
+            <a class="float-right" href="#top">top</a>
             <h2>Installing modules</h2>
             <p>
                 There are as yet few distribution-ready packages.
@@ -227,11 +230,12 @@
                 into a virtualenv. If you try to build a module and the build process complains
                 about &ldquo;missing Python.h&rdquo;, you may need to install the pypy-dev package.
             </p>
-            <hr>
+            <hr class="mt-5">
         </section>
 
 
         <section id="installing-numpy">
+            <a class="float-right" href="#top">top</a>
             <h2>Installing NumPy</h2>
             <p>
                 <strong>There are two different versions of NumPy for PyPy.</strong> For details see this
@@ -280,11 +284,12 @@ pypy setup.py install
                     <a href="http://doc.pypy.org/en/latest/faq.html#should-i-install-numpy-or-numpypy">FAQ question</a> about the difference between the two.
                 </p>
             </div>
-            <hr>
+            <hr class="mt-5">
         </section>
 
 
         <section id="building-from-source">
+            <a class="float-right" href="#top">top</a>
             <h2>Build from source</h2>
 
             <p>(see more build <a href="http://pypy.readthedocs.org/en/latest/build.html">instructions</a>)</p>
@@ -349,7 +354,7 @@ pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone   # get the sa
                 </li>
             </ol>
             <h4>Notes:</h4>
-            <ul class="ml-3">
+            <ul>
                 <li>
                     <p>
                         It is recommended to use PyPy to do translations, instead of using CPython,
@@ -421,11 +426,12 @@ PYPY_DONT_RUN_SUBPROCESS=1 PYPY_GC_MAX_DELTA=200MB pypy --jit loop_longevity=300
                 </li>
             </ul>
 
-            <hr>
+            <hr class="mt-5">
         </section>
 
 
         <section id="packaging">
+            <a class="float-right" href="#top">top</a>
             <h2>Packaging</h2>
 
             <p>
@@ -446,7 +452,7 @@ python package.py --archive-name pypy-my-own-package-name
                 and require some compilation. If you install PyPy as root without
                 pre-compiling them, normal users will get errors:
             </p>
-            <ul class="ml-3">
+            <ul>
                 <li>
                     <strong>PyPy 2.5.1 or earlier:</strong> normal users would see permission errors.
                     Installers need to run <code>pypy -c &ldquo;import gdbm&rdquo;</code> and other similar
@@ -469,11 +475,12 @@ python package.py --archive-name pypy-my-own-package-name
             </ul>
             </div>
 
-            <hr>
+            <hr class="mt-5">
         </section>
 
 
         <section id="checksums">
+            <a class="float-right" href="#top">top</a>
             <h2>Checksums</h2>
             <p>Here are the checksums for each of the downloads</p>
 
@@ -543,7 +550,7 @@ ed8005202b46d6fc6831df1d13a4613bc40084bfa42f275068edadf8954034a3  pypy3-v6.0.0-s
 
 </code></pre>
 
-            <hr>
+            <hr class="mt-5">
         </section>
 
     </main>

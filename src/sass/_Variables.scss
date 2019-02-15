@@ -7,14 +7,19 @@
 // –––––––––––––––––––––––––––––––––––––––––––––––––– // Colours
 
 $pypy-blue: #1890ff; 
-$pypy-grey: #606c76; 
-$pypy-light-grey: #a8b1b6; 
-$pypy-dark-grey: #576166; 
-$pypy-white: #fff; 
-$pypy-off-white: #fafafa; 
+$pypy-grey: #4B545C; //606c76
+$pypy-light-grey: #8B9298; //a8b1b6
+$pypy-dark-grey: #495257; //576166
+$pypy-white: #fcfcfc; 
+$pypy-off-white: #f4f5f6; 
 
 
 
 
 // Base/BaseModules/Color
+$base-color-initial: $pypy-white;
 $base-color-primary: $pypy-blue;
+$base-color-secondary: $pypy-grey;
+$base-color-tertiary: $pypy-off-white;
+$base-color-quaternary: #d1d1d1;
+$base-color-quinary: #e1e1e1;

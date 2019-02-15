@@ -5,16 +5,27 @@
 $navbar-collapse-width: 60rem
 $navbar-item-bg-color: rgba(255, 255, 255, 0.98)
 $navbar-menu-color: #fff
+$navbar-item-active-color: $pypy-blue
+$navbar-item-active-hover-color: $pypy-grey
 
 .navbar
     display: flex
     flex-wrap: wrap
     justify-content: space-between
-    margin-top: 1rem
+    margin-top: 2rem
+    padding-left: 0
+    padding-inline-start: 0
 
 .navbar-item
     padding: 0.5rem 0.66rem
     margin: 0 0.2rem
+
+.nav-item-active
+    border-radius: .4rem
+    border: 0.1rem solid $navbar-item-active-color
+    &:hover
+        border-color: $navbar-item-active-hover-color
+
 
 .navbar-menu
     display: none
@@ -41,7 +52,9 @@ $navbar-menu-color: #fff
     display: flex
     flex-wrap: wrap
     justify-content: space-between
-    margin-top: 1rem
+    margin-top: 2rem
+    padding-left: 0
+    padding-inline-start: 0
 
 @media screen and (max-width: $navbar-collapse-width)
     // show menu. Added with js        
