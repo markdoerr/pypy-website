@@ -9,8 +9,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build-sass": "node ./node_modules/node-sass/bin/node-sass --include-path sass src/sass/styles.sass web/css/styles.css",
-    "minify-css": "cleancss -o web/css/styles.min.css web/css/styles.css",
+    "build-sass": "node ./node_modules/node-sass/bin/node-sass --include-path sass src/sass/styles.sass doc/css/styles.css",
+    "minify-css": "cleancss -o doc/css/styles.min.css web/css/styles.css",
     "watch-sass": "nodemon -e scss,sass -x \"npm run build-sass && npm run minify-css\"",
     "serve": "node ./node_modules/http-server/bin/http-server ./web"
   },
