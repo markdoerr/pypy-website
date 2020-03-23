@@ -333,7 +333,13 @@ hg update py3.5
                     <pre><code>
 pypy ../../rpython/bin/rpython -Ojit targetpypystandalone           # get the JIT version
 pypy ../../rpython/bin/rpython -O2 targetpypystandalone             # get the no-jit version
-pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone   # get the sandbox version
+
+# to build the pypy-sandbox, please compile the pypy JIT version first (s. first step)
+# rename the built pypy-c (and corrosponing libray libpypy-c.so) to pypy-c-jit and 
+# libpypy-c.so-jit respectively (it is needed later for packaging) and then call  
+pypy ../../rpython/bin/rpython -O2 --sandbox targetpypystandalone   # to get the sandbox version
+# rename the resulting, new pypy-c to pypy-c-sandbox (and corresponding library libpypy-c.so-sandbox) 
+# and pypy-c-jit to pypy-c  (do not forget corresponding library libpypy-c.so-jit -> libpypy-c.so)
 
 </code></pre>
                 </li>
@@ -443,6 +449,11 @@ PYPY_DONT_RUN_SUBPROCESS=1 PYPY_GC_MAX_DELTA=200MB pypy --jit loop_longevity=300
 cd ./pypy/pypy/tool/release/
 python package.py --help #for information
 python package.py --archive-name pypy-my-own-package-name
+
+# to pack the pypy-c-sandbox, a full JIT-version of pypy-c (including the corresponding library) needs to be in the goal directory 
+python package.py --archive-name pypy_my-sandbox-os --builddir ../../goal  --targetdir my/package/targetdir
+# to use the sandbox, please rename the library back to libpypy-c.so-jit and 
+# libpypy-c.so-sandbox to libpypy-c.so 
 
 </code></pre>
             <p>
