@@ -167,13 +167,19 @@
 
                 <p>
                     To run the sandboxed process, you need to get the full sources and
-                    build <code>pypy-sandbox</code> from it (see <a href="download.html#building-from-source">Building from source</a>). These
+                    build <code>pypy-c-sandbox</code> from it (see <a href="download.html#building-from-source">Building from source</a>). These
                     instructions give you a <code>pypy-c</code> that you should rename to
-                    <code>pypy-sandbox</code> to avoid future confusion. Then run:
+                    <code>pypy-c-sandbox</code> to avoid future confusion. 
+                    The next step ist to pack everything using the package tool like:
                 </p>
                 <pre><code>
+                    cd tool/release/
+                    python package.py --archive-name my_pypy_sandbox_package --builddir ../../goal --targetdir my/package/target/dir
+                </code> </pre>
+                <p> And finally start, e.g., an interactive pypy-sandox interpreter shell: </p>
+                <pre><code>
 cd pypy/sandbox
-pypy_interact.py path/to/pypy-sandbox
+pypy_interact.py  --lib-path=path/to/my_pypy_sandbox_package  path/to/pypy-c-sandbox -i
 # don't confuse it with pypy/goal/pyinteractive.py!
                 </code></pre>
                 <p>You get a fully sandboxed interpreter, in its own filesystem hierarchy
@@ -182,7 +188,7 @@ pypy_interact.py path/to/pypy-sandbox
                 <pre><code>
 mkdir virtualtmp
 cp untrusted.py virtualtmp/
-pypy_interact.py --tmp=virtualtmp pypy-sandbox /tmp/untrusted.py
+pypy_interact.py   --lib-path=path/to/my_pypy_sandbox_package --tmp=virtualtmp path/to/pypy-c-sandbox /tmp/untrusted.py
                 </code></pre>
                 <p>Note that the path <code>/tmp/untrusted.py</code> is a path inside the sandboxed
                     filesystem. You don't have to put <code>untrusted.py</code> in the real <code>/tmp</code>
